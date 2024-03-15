@@ -35,15 +35,19 @@ export default function MovieCast() {
     <div>
       {isLoading && <p>Loading...</p>}
       {error && <NotFoundPage />}
-      <ul>
-        {actors.map((actor) => (
-          <li key={actor.id}>
-            <p>{actor.name}</p>
-            <p>{actor.character}</p>
-            <img src={getImageUrl(actor.profile_path)} alt="" />
-          </li>
-        ))}
-      </ul>
+      {actors.length > 0 ? (
+        <ul>
+          {actors.map((actor) => (
+            <li key={actor.id}>
+              <p>{actor.name}</p>
+              <p>{actor.character}</p>
+              <img src={getImageUrl(actor.profile_path)} alt="" />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No information available about the cast</p>
+      )}
     </div>
   );
 }

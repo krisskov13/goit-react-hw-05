@@ -28,14 +28,18 @@ export default function MovieReviews() {
     <div>
       {isLoading && <p>Loading...</p>}
       {error && <NotFoundPage />}
-      <ul>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            <p>Author: {review.author}</p>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
+      {reviews.length > 0 ? (
+        <ul>
+          {reviews.map((review) => (
+            <li key={review.id}>
+              <p>Author: {review.author}</p>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>There is no information about reviews</p>
+      )}
     </div>
   );
 }
